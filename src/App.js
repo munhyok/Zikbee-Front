@@ -1,25 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import {Main} from './component/main/layout/main'
+import {Goods} from './component/goods/layout/goods'
+import Modal from 'react-modal';
+import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
+
+Modal.setAppElement('#root')
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+      <div>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='goods/:item' element={<Goods />} />
+          </Routes>
+        </Router>
+      </div>
+    
   );
 }
+
 
 export default App;
