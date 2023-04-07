@@ -21,6 +21,23 @@ function timeNow(){
 
 
 
+const kwdPost = (keyword) => {
+    fetch("http://127.0.0.1:5200/autokwd", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          path: "autokwd",
+          autokwd: keyword,
+        }),
+      })
+      .then((response) => response.json())
+      .then((result) => console.log(result));
+}
+
+
+
 export function Main() {
 
     
@@ -29,19 +46,81 @@ export function Main() {
     const [data, setData] = useState([])
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [crawlstate_, setCrawlstate] = useState(false);
-    const ws = new WebSocket("ws://61.73.97.219:1212")
+    const [completeData, setCompleteData] = useState([]);
+    const [nalKwdData, setNalKwdData] = useState([])
+    const [keyword, setKeyword] = useState("");
+    const [isComposing, setIsComposing] = useState(false)
     
     
+    
+    
+    const fetchAutocomplete = (keyword_) => {
+        const dummyList = []
+        return fetch(
+            'https://completion.amazon.com/api/2017/suggestions?session-id=133-4736477-7395454&customer-id=&request-id=4YM3EXKRH1QJB16MSJGT&page-type=Gateway&lop=en_US&site-variant=desktop&client-info=amazon-search-ui&mid=ATVPDKIKX0DER&alias=aps&b2b=0&fresh=0&ks=71&prefix='+keyword_+'&event=onKeyPress&limit=11&fb=1&suggestion-type=KEYWORD'
+        ).then((res) => res.json())
+        .then((complete) => {
+            var idLength = complete.suggestions.length
+            var dummy
+            for (var i = 0; i < idLength; i++){
+                dummy = complete.suggestions[i].value
+                
+                dummyList.push(dummy)
+                
+            }
+            
+            
+            setCompleteData(dummyList)
+            console.log(completeData)
+        })
+
+        
+    }
+
+    const fetchAutocomplete_NAL = (keyword_) => {
+        const dummyList =[]
+
+        return fetch(
+            'http://127.0.0.1:5200/autokwd/'+keyword_
+        ).then((res) => res.json())
+        .then((complete) => {
+            var idLength = complete.length
+            console.log(idLength)
+            console.log(complete)
+            var dummy
+
+            for (var i = 0; i < idLength; i++){
+                dummy = complete[i].autokwd
+                dummyList.push(dummy)
+            }
+
+            setNalKwdData(dummyList)
+            console.log(nalKwdData)
+            
+        })
+    }
+
+
 
     useEffect(() => {
         
-        ws.onopen = () => {
-            console.log('연결완료!')
-        }
+        
         document.documentElement.setAttribute("lang", 'ko');
-        document.title = 'Closed Alpha Test'
+        document.title = '직비 Alpha Test'
         //해외 직구하기 좋은 날
-    })
+        
+        console.log(keyword)
+        const debounce = setTimeout(() => {
+            if(keyword) {
+                fetchAutocomplete(keyword);
+                fetchAutocomplete_NAL(keyword)
+            }
+            },200)
+            return () => {
+            clearTimeout(debounce)
+        }
+        
+    }, [keyword])
 
 
     let stateData = null
@@ -52,9 +131,12 @@ export function Main() {
     
 
     let loadInterval = (keyword) => {
+
+        //keyword = filterKeyword(keyword)
+
         timer = setInterval(() => {
             if (crawlstatus === 200){
-                fetch('http://61.73.97.219:5200/goods/'+keyword, {method: 'get'},{headers:{"Content-Type": "application/json"}})
+                fetch('http://127.0.0.1:5200/goods/'+keyword, {method: 'get'},{headers:{"Content-Type": "application/json"}})
                 .then((res_) => res_.json())
                 .then((res__) => {
                     stateData = res__
@@ -76,11 +158,11 @@ export function Main() {
                     }else{console.log('수집 중')}
                 })
             }else if (crawlstatus === 404){
-                fetch('http://61.73.97.219:5200/goods/'+keyword, {method: 'get'})
+                fetch('http://127.0.0.1:5200/goods/'+keyword, {method: 'get'})
                 .then((res) =>{
         
 
-                    console.log(res.status)
+                    //console.log(res.status)
 
         
                     if (res.status === 200){
@@ -90,7 +172,8 @@ export function Main() {
                         stopInterval()
                     
                     }else if (res.status === 404){
-                        console.log('수집 중')
+                        
+                        console.log(res.status)
                     }else{
                         console.log('crawlerror')
                         stopInterval()
@@ -113,10 +196,17 @@ export function Main() {
 
 
 
-    const getData = async (keyword) => {
+    const getData = async (keyword_) => {
+
+        
+
+        const ws = new WebSocket("ws://127.0.0.1:1212");
+        ws.onopen = () => {
+            console.log('연결완료!')
+        }
 
         const message = document.getElementById('textMessage')
-        const res = await fetch('http://61.73.97.219:5200/goods/'+keyword, {method: 'get'})
+        const res = await fetch('http://127.0.0.1:5200/goods/'+keyword_, {method: 'get'})
         
         const resData = await res.json()
         
@@ -133,18 +223,18 @@ export function Main() {
 
 
         if (res.status === 404){ 
-            ws.send(message.value)
+            ws.send(keyword_)
             console.log('데이터 수집 시작')
             
             setModalIsOpen(true)
             crawlstatus = 404
-            loadInterval(keyword)
+            loadInterval(keyword_)
 
         } else if(res.status === 200){
             let sysTime = timeNow()
             let refreshTime = ''
             let diffTime = ''
-            let keyword_ = ''
+            
             data_.map((data) => (
                 refreshTime = data.refreshtime
         
@@ -160,17 +250,17 @@ export function Main() {
             console.log(refreshTime)
 
             if (Math.abs(diffTime) > 10){
-                fetch('http://61.73.97.219:5200/goods/'+keyword+'?state=true', {method:"PATCH"},{})
-                ws.send(message.value)
+                fetch('http://127.0.0.1:5200/goods/'+keyword_+'?state=true', {method:"PATCH"},{})
+                ws.send(keyword_)
                 console.log('10분 지나서 크롤링 시작')
                 setModalIsOpen(true)
                 crawlstatus = 200
-                loadInterval(keyword)
+                loadInterval(keyword_)
                 
                 
 
             } else {
-                nav(`/goods/${keyword}`);
+                nav(`/goods/${keyword_}`);
                 clearInterval(loadInterval)
             }
 
@@ -180,17 +270,22 @@ export function Main() {
         
     }
 
-    const sendMessage = () => {
+    const sendMessage = (keyword_) => {
+        
+        
 
+        const message = document.getElementById('textMessage').value
+        console.log(keyword_)
+        console.log(message)
 
-        const message = document.getElementById('textMessage')
-        let httpStatus = ''
-        if (message.value == "") {
+        kwdPost(keyword_)
+        if (message == "") {
             console.log('검색어가 없음')
             
         }
         else{
-            getData(message.value)
+            getData(keyword_)
+            console.log(keyword_)
             
         }
 
@@ -199,16 +294,38 @@ export function Main() {
         
     }
 
-    const onKeyPress=(e) => {
+    const handleChange = (e) => {
+
+        var inputKeyword = document.getElementById('textMessage').value
+        setKeyword(inputKeyword)
         
+        
+        
+            
+        
+        
+        
+    }
+    const onKeyPress_=(e) => {
+        
+        const message = document.getElementById('textMessage').value
         if (e.key == 'Enter'){
-            sendMessage()
+            sendMessage(message)
+
+            
         }
 
         
         
 
     }
+
+    const btnClick = () =>{
+        const message = document.getElementById('textMessage').value
+        sendMessage(message)
+    }
+
+
 
     return(
        
@@ -226,18 +343,68 @@ export function Main() {
                 <div className='searchArea'>
 
                     <div className='searchRect'>
-                        <input id='textMessage' className='searchInput' onKeyDown={onKeyPress}></input>
+                        <input id='textMessage' className='searchInput' onKeyPress={onKeyPress_} onChange={handleChange} autoComplete="off" ></input>
 
 
-
-                        <a type='button' id='searchBtnInput' className='searchButton' onClick={sendMessage}>
+                        
+                        <a type='button' id='searchBtnInput' className='searchButton' onClick={btnClick}>
                             <FaSearch/>
                         </a>
 
 
 
                     </div>
+                    
+                    
                 </div>
+
+                {keyword.length > 0 && (
+                        
+
+                        <div className='autoCompleteArea'>
+                            <div className='autoCompleteRect'>
+                                {completeData.map((item, index) => {
+                                    return(
+                                        <ul className='autoCompleteData'>
+                                            <li
+                                            key ={item}
+                                            onClick={() =>{
+                                                console.log(item)
+                                                sendMessage(item)
+                                            }} >
+                                                <div>
+                                                    {item}
+                                                </div>
+                                                
+                                            </li>
+                                        </ul>
+                                        
+                                    )
+                                })}
+                                <hr></hr>
+                                {nalKwdData.map((item_, index) => {
+                                    return(
+                                        <ul className='autoCompleteData'>
+                                            <li
+                                                key={item_}
+                                                onClick={() => {
+                                                    console.log(item_)
+                                                    sendMessage(item_)
+                                                }}
+
+                                            >
+                                                <div>
+                                                    {item_}
+                                                </div>
+
+                                            </li>
+                                        </ul>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    
+                    )}
 
                 <Modal isOpen={modalIsOpen}>
                     <div className='modalText'>

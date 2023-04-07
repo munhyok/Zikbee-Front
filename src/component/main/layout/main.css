@@ -38,7 +38,7 @@
 .searchArea{
     
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -84,4 +84,28 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.autoCompleteArea{
+    
+    
+    display: flex;
+    justify-content: center;
+}
+
+.autoCompleteRect{
+    
+    
+    
+    width: 70%;
+
+    
+    
+    justify-content: center;
+    
+    border: 2px blueviolet solid;
+}
+
+.autoCompleteData{
+    list-style-type: none;
 }

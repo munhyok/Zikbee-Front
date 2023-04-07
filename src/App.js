@@ -15,7 +15,7 @@ function App() {
       <div>
         <Router>
           <Routes>
-            <Route path='/nal' element={<Main />} />
+            <Route path='/' element={<Main />} />
             <Route path='goods/:item' element={<Goods />} />
           </Routes>
         </Router>

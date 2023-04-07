@@ -4,10 +4,13 @@
 
 .header {
     display: flex;
-    justify-content: center;
-    
-    margin-bottom: 10px;
+    flex-direction: row;
     background-color: rgb(172, 172, 172, 0.3);
+
+    
+}
+.itemName{
+    margin-left: 15px;
 }
 
 .wrap{
@@ -72,6 +75,33 @@
     width: 350px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    margin: 5px;
     
     
+}
+
+.goodsName{
+    padding: 10px;
+}
+
+
+.productArea{
+    display: flex;
+    flex-direction: row;
+}
+
+.image_{
+    width: 100px;
+    height: 100px;
+
+}
+
+.backBtn{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+    
+
 }
