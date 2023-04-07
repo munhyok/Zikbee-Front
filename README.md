@@ -1,6 +1,6 @@
 # 직비(직구 가격 비교 사이트)
 
-![](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6963909a-6eed-4dd7-99ea-7f249f3cd265/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6963909a-6eed-4dd7-99ea-7f249f3cd265/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6963909a-6eed-4dd7-99ea-7f249f3cd265/Untitled.png)
 
 # 기획 의도
 
