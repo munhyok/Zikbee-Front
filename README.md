@@ -1,6 +1,6 @@
 # 직비(직구 가격 비교 사이트)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6963909a-6eed-4dd7-99ea-7f249f3cd265/Untitled.png)
+![](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6963909a-6eed-4dd7-99ea-7f249f3cd265/Untitled.png)
 
 # 기획 의도
 
@@ -44,13 +44,13 @@ Data Collection
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a39a26de-086e-4f9d-98f7-988a04a1ea47/Untitled.png)
+![](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a39a26de-086e-4f9d-98f7-988a04a1ea47/Untitled.png)
 
 ## 2. 아마존 자동완성을 이용한 상품명 불러오기
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b0c2af4c-22c1-4e2b-b004-c7b9a8783db7/Untitled.png)
+![](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b0c2af4c-22c1-4e2b-b004-c7b9a8783db7/Untitled.png)
 
 아마존의 자동완성은 이용할 수 있게 열려있고
 제품명 위주로 되어있는 아마존의 자동완성이 적합하다고 판단
@@ -59,13 +59,13 @@ Data Collection
 
 ---
 
-[Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4172278-333c-45ab-9d1a-3b625ca67fe3/Untitled.webm)
+[](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4172278-333c-45ab-9d1a-3b625ca67fe3/Untitled.webm)
 
 ## 4. 웹소켓을 이용해 백그라운드로 데이터 스크래핑
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17514875-1d88-4722-bacf-0139dad8a31b/Untitled.png)
+![](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17514875-1d88-4722-bacf-0139dad8a31b/Untitled.png)
 
 **시기**
 
