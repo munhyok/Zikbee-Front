@@ -1,4 +1,5 @@
 # 직비(직구 가격 비교 사이트)
+해당 Repo는 Front 부분입니다
 
 Other: Selenium
 DB: Redis
