@@ -1,12 +1,15 @@
 # 직비(직구 가격 비교 사이트)
 
-Other: Selenium
+Other: Selenium
 DB: Redis
 Front-End: React
 Language: Javascript, Python, React.js
 MiddleWare: FastAPI, WebSocket
 
-![Untitled](%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B5(%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%80%E1%85%AE%20%E1%84%80%E1%85%A1%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%87%E1%85%B5%E1%84%80%E1%85%AD%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3)%20271d5eaa6d9544e6acc450ecebbfa8af/Untitled.png)
+
+![Untitled 1](https://user-images.githubusercontent.com/11683617/230627339-ce8438d2-01a1-464c-a04d-58b1f36b6636.png)
+
+
 
 # 기획 의도
 
@@ -50,13 +53,16 @@ Data Collection
 
 ---
 
-![Untitled](%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B5(%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%80%E1%85%AE%20%E1%84%80%E1%85%A1%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%87%E1%85%B5%E1%84%80%E1%85%AD%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3)%20271d5eaa6d9544e6acc450ecebbfa8af/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/11683617/230627339-ce8438d2-01a1-464c-a04d-58b1f36b6636.png)
+
+
 
 ## 2. 아마존 자동완성을 이용한 상품명 불러오기
 
 ---
 
-![Untitled](%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B5(%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%80%E1%85%AE%20%E1%84%80%E1%85%A1%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%87%E1%85%B5%E1%84%80%E1%85%AD%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3)%20271d5eaa6d9544e6acc450ecebbfa8af/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/11683617/230627395-df494fc6-1798-4bdc-8bf9-157c041db680.png)
+
 
 아마존의 자동완성은 이용할 수 있게 열려있고
 제품명 위주로 되어있는 아마존의 자동완성이 적합하다고 판단
@@ -65,13 +71,15 @@ Data Collection
 
 ---
 
-[Untitled](%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B5(%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%80%E1%85%AE%20%E1%84%80%E1%85%A1%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%87%E1%85%B5%E1%84%80%E1%85%AD%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3)%20271d5eaa6d9544e6acc450ecebbfa8af/Untitled.webm)
+[Untitled.webm](https://user-images.githubusercontent.com/11683617/230627458-e40817ac-222e-4b84-80c9-58cae0d3e026.webm)
+
 
 ## 4. 웹소켓을 이용해 백그라운드로 데이터 스크래핑
 
 ---
 
-![Untitled](%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B5(%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%80%E1%85%AE%20%E1%84%80%E1%85%A1%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%87%E1%85%B5%E1%84%80%E1%85%AD%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3)%20271d5eaa6d9544e6acc450ecebbfa8af/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/11683617/230627490-39e5e0b3-65ad-4d1d-871e-b73550898435.png)
+
 
 **시기**
 
