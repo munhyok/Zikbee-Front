@@ -76,10 +76,12 @@ Data Collection
 
 
 ## 4. 웹소켓을 이용해 백그라운드로 데이터 스크래핑
-
+### 전체적인 
 ---
 
-![Untitled 3](https://user-images.githubusercontent.com/11683617/230627490-39e5e0b3-65ad-4d1d-871e-b73550898435.png)
+
+![제목 없는 다이어그램 drawio](https://github.com/munhyok/Zikbee-Front/assets/11683617/fdf4b7b4-6dc8-4795-aa70-54ad5817dd72)
+
 
 
 **시기**
