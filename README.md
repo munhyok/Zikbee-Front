@@ -145,6 +145,7 @@ FrontEnd에서 보내준 검색어를 받아 Scraper Process Container에 새로
 Python의 [**Multiprocessing**](https://docs.python.org/ko/3/library/multiprocessing.html) 라이브러리를 사용해 어떤 검색어가 들어와도 바로 스크래핑 봇을 실행해 다수의 일을 해결할 수 있게 만들었다.
 
 
+[ezgif.com-crop (1).webm](https://github.com/munhyok/Zikbee-Front/assets/11683617/f50833bf-6cad-4393-b6d3-cc557381a0dd)
 
 
 	테스트 영상.gif
