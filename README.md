@@ -144,7 +144,8 @@ FrontEnd에서 보내준 검색어를 받아 Scraper Process Container에 새로
 부분을 해결하였다.
 Python의 [**Multiprocessing**](https://docs.python.org/ko/3/library/multiprocessing.html) 라이브러리를 사용해 어떤 검색어가 들어와도 바로 스크래핑 봇을 실행해 다수의 일을 해결할 수 있게 만들었다.
 
-![](https://velog.velcdn.com/images/grit_munhyeok/post/c3a558d6-a203-4457-b7eb-b3c3d99f262b/image.gif)
+
+
 
 	테스트 영상.gif
 
